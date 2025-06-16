@@ -1,0 +1,764 @@
+body {
+margin: 0;
+padding: 0;
+background: #fff; /* <--- Dies sollte bereits weiß sein */
+color: #333;
+   min-height: 100vh;
+    position: relative;
+}
+
+h1, h3, h4 { /* h1 und h3 sollen GFS Didot verwenden */
+margin: 0.5rem 0;
+text-align: center;
+font-family: 'Playfair Display', serif;
+}
+
+p {
+margin: 0.5rem 0;
+text-align: center;
+font-family: 'Montserrat', sans-serif;
+font-weight: 100; /* Für Montserrat Thin */
+}
+
+button {
+background-color: #81D8D0;
+color: black;
+border: none;
+padding: 1rem 1rem;
+border-radius: 5px;
+font-size: 1rem;
+cursor: pointer;
+font-family: 'Montserrat', sans-serif;
+}
+
+
+.cupcake {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+justify-content: space-between;
+height: 100%;
+}
+
+.cupcake img {
+width: 100%;
+max-width: 430px; /* Begrenzung für Mobile */
+height: auto;
+object-fit: cover;
+margin-bottom: 10px;
+flex-grow: 1;
+}
+
+.cupcake h3 {
+margin-top: auto;
+margin-bottom: 0;
+/* h3 hier erbt von der globalen h3-Regel (GFS Didot) */
+}
+
+.cupcake-button {
+margin-top: 0.5rem;
+align-self: center;
+max-width: 90%;
+width: fit-content;
+white-space: nowrap;
+}
+
+
+main {
+    position: relative; /* MUSS positioniert sein, damit z-index funktioniert */
+    z-index: 2; /* MUSS HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
+    margin-top: 100vh; /* Genau 100% der Viewport-Höhe, um den Wrapper unter dem Header zu starten */
+    background-color: white; /* **Ganz WICHTIG:** Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
+    width: 100%;
+    padding-top: 1px; /* **Wichtig:** Verhindert "margin-collapse" mit dem ersten Kindelement */
+    box-sizing: border-box; /* Sicherstellen, dass Padding in der Breite enthalten ist */
+}
+
+footer { /* Dies gilt für den Footer in beiden Ansichten als Basis */
+    position: relative;
+    z-index: 2; /* Muss HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
+    background-color: #f2f2f2; /* Wichtig: Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2rem 1rem;
+    margin-top: 0;
+    padding-top: 1px; /* Verhindert Margin Collapse */
+    box-sizing: border-box;
+}
+
+/* --- Globale Sichtbarkeit Helper Klassen (WICHTIG!) --- */
+body .mobile-only {
+display: block;
+}
+
+body .desktop-only {
+display: none;
+}
+
+/* ============================================== */
+/* MOBILE SPEZIFISCHES CSS */
+/* ============================================== */
+/* --- HEADER: Fixiert, füllt den Bildschirm, Inhalt scrollt darüber --- */
+.hero.mobile-only {
+    position: fixed; /* WICHTIG: Bild bleibt fixiert im Hintergrund */
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+overflow: hidden; /* Verhindert Scrollbars für das Bild selbst */
+z-index: 1; /* Stellt sicher, dass das Bild im Hintergrund ist */
+background-color: #fff; /* Fallback, falls Bild nicht lädt */
+/* Kein margin-bottom mehr hier, da der nächste Abschnitt überlappt */
+display: flex; /* Bleibt wie gehabt für Zentrierung des Textes */
+justify-content: center;
+align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Dezenter Schatten für visuelle Trennung */
+}
+
+.hero.mobile-only img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Bild füllt den Bereich aus, kann beschnitten werden */
+    display: block;
+}
+
+.hero-text-mobile {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Zentriert den Text im Hero-Bereich */
+    color: black;
+    z-index: 2; /* Text über dem Bild im Hero */
+    white-space: nowrap;
+}
+
+.hero-text-mobile h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-family: 'GFS Didot', serif; /* Spezifische Schriftart für diesen h1 */
+}
+
+.hero-text-mobile p {
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+}
+
+/* --- MAIN CONTENT: Rollt über den fixierten Header --- */
+
+
+
+/* --- Mobile Cupcake Grid (2 Spalten) --- */
+.cupcake-grid.mobile-only {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1rem;
+padding: 1rem;
+background-color: #fff;
+margin-bottom: 1rem;
+}
+
+
+/* --- Mobile Vollbild Bilder (Brautpaar) --- */
+/* --- Mobile Vollbild Bilder (Brautpaar) --- */
+.full-screen-image {
+    width: 100vw;
+    height: 100vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
+    overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
+    position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
+
+    background-image: url('images/Brautpaar.jpg'); /* Pfad zu deinem mobilen Brautpaar-Bild */
+    background-size: cover; /* Bild füllt den Container und wird beschnitten */
+    background-position: center center; /* Bild zentrieren */
+    background-repeat: no-repeat; /* Verhindert Wiederholung */
+    background-attachment: fixed; /* <--- HIER ÄNDERN! Setze dies auf FIXED für den Parallax-Effekt auf Mobile */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Fallback Farbe */
+    margin-bottom: 1rem;
+    margin-top: 1rem; /* Abstand zur vorherigen Sektion */
+}
+
+
+/* --- Mobile Braut Sektion --- */
+.bride-section.mobile-only {
+position: relative;
+text-align: center;
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #fff;
+margin-bottom: 1rem;
+}
+
+.bride-section.mobile-only img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+.bride-section.mobile-only .cta-button {
+position: absolute;
+bottom: 10%;
+left: 50%;
+transform: translateX(-50%);
+z-index: 5;
+/* **GEÄNDERT: Montserrat für mobile CTA Button** */
+font-family: 'Montserrat', sans-serif;
+padding: 1.5rem 3rem;
+font-size: 2rem;
+}
+
+
+/* --- Mobile Testimonials --- */
+.testimonial-block.mobile-only {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 1.5rem 1rem;
+background-color: #fff;
+margin-bottom: 1rem;
+gap: 3rem;
+}
+
+.testimonial {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+margin: 0;
+max-width: 90%;
+width: 100%;
+}
+
+.testimonial-image-wrapper {
+flex-shrink: 0;
+width: 150px;
+height: 150px;
+margin-bottom: 1rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.testimonial img.round {
+border-radius: 50%;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.testimonial-text-content {
+flex-grow: 1;
+text-align: center;
+font-size: 1rem;
+line-height: 1.5;
+/* Montserrat für Testimonial-Text */
+font-family: 'Montserrat', sans-serif;
+}
+
+.testimonial-text-content p {
+margin-bottom: 0.5rem;
+text-align: center;
+/* Erbt Montserrat Thin von p-Regel */
+}
+
+.testimonial .testimonial-text-content p.author {
+font-size: 0.9em;
+font-style: italic;
+color: gray;
+margin-top: 0.5rem;
+font-family: 'Montserrat', sans-serif; /* Explizit Montserrat für Author */
+font-weight: 400; /* Autorname evtl. normal */
+}
+
+/* --- Mobile Cupcakes in Schachtel --- */
+.full-width-image.mobile-only {
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 0;
+}
+
+.full-width-image.mobile-only img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+
+
+
+
+
+/* Deine bestehenden Footer-Sub-Styles */
+.footer-mobile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 1rem;
+}
+
+.footer-mobile-column {
+    padding: 1rem 0;
+    text-align: left;
+}
+
+.footer-mobile-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.footer-mobile-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-mobile-column li {
+    margin-bottom: 0.3rem;
+}
+
+.footer-mobile-column a {
+    text-decoration: none;
+    color: #666;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-mobile-column a:hover {
+    color: #000;
+}
+
+.mobile-footer-divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.copyright-mobile {
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 1rem;
+    color: #333;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+/* ============================================== */
+/* DESKTOP SPEZIFISCHES CSS */
+/* ============================================== */
+@media (min-width: 768px) {
+.mobile-only {
+display: none !important;
+}
+
+.desktop-only {
+display: block !important;
+}
+
+
+
+ .hero-container.desktop-only {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 150vh; /* Höhe des fixierten Hintergrundbildes */
+        overflow: hidden;
+        z-index: 1; /* HINTERGRUND */
+        background-color: #fff;
+    }
+
+    .hero-container.desktop-only img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+ .hero-desktop-scrolling.desktop-only {
+        position: absolute; /* Muss absolut sein, um über dem Bild zu schweben und zu scrollen */
+        width: 100%;
+        text-align: center;
+        color: black;
+        z-index: 3; /* Muss ÜBER Hero-Bild (z-index: 1) und main-Inhalt (z-index: 2) liegen */
+
+        /* NEUE BERECHNUNG für 'top': */
+        /* Die Überschrift soll sichtbar im Viewport starten, z.B. am unteren Rand des 100vh-Bereichs.
+           Da der Hero 150vh hoch ist, starten wir sie bei 100vh vom oberen Rand.
+           Damit die Überschrift nicht am unteren Rand *klebt*, ziehen wir die Höhe der Überschrift selbst ab. */
+        top: 15px; /* Beispiel: Startet 150px ÜBER dem unteren Rand des *initial sichtbaren* Viewports (100vh) */
+                                 /* Die 150px ist eine Schätzung für die Höhe deiner Überschrift + etwas Puffer.
+                                    Dieser Wert muss eventuell angepasst werden, bis es visuell perfekt ist. */
+        left: 0;
+        transform: none;
+        position:calc(100vh - 100px) ;
+        padding-top: 50px;    /* Etwas Puffer, um die gesamte Höhe des Textblocks zu beeinflussen */
+        padding-bottom: 50px; /* Etwas Puffer */
+    }
+
+    .hero-desktop-scrolling.desktop-only h1 {
+        font-size: 5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-desktop-scrolling.desktop-only p {
+        font-size: 2.5rem;
+        font-style: italic;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+    /* --- MAIN CONTENT (Desktop) --- */
+    main {
+        position: relative;
+        z-index: 2; /* Der Hauptinhalt sollte unter der scrollenden Überschrift (z-index: 3) liegen, aber über dem fixierten Bild (z-index: 1). */
+        /* Der margin-top muss jetzt die Höhe des fixierten Headers PLUS die Höhe der "Scroll-Strecke" der Überschrift ausgleichen.
+           Da die Überschrift bei calc(100vh - 200px) startet und dann bis zum oberen Rand (0px) scrollt,
+           ist die zusätzliche Scroll-Strecke ungefähr 100vh - 200px.
+           Da der hero-container 150vh ist, ist es am einfachsten, den margin-top von main so zu setzen,
+           dass er den *gesamten fixierten Bereich* überbrückt und die Überschrift dann sauber überdeckt wird. */
+        margin-top: 100vh; /* Beginnt NACH der vollen Höhe des Hero-Containers. Die Überschrift wird darübergleiten. */
+        background-color: white; /* KRITISCH: Solide Farbe um Hero zu verdecken */
+        width: 100%;
+        padding-top: 1px;
+        box-sizing: border-box;
+    }
+
+
+/* --- Cupcake Reihen (Desktop) - ANGEPASST FÜR REVEAL-EFFEKT --- */
+.cupcake-row.desktop-only {
+position: relative; /* WICHTIG: Damit z-index funktioniert */
+z-index: 2; /* Stellt sicher, dass die Cupcakes über dem Header-Bild sind */
+/*margin-top: 100vh; /* WICHTIG: Startet den Cupcake-Bereich unterhalb des Viewports */
+background-color: white; /* Hintergrundfarbe, die den Hero überblendet */
+padding-top: 2rem; /* Initiales Padding am oberen Rand der Cupcake-Sektion */
+display: flex !important;
+flex-wrap: wrap !important;
+justify-content: center !important;
+column-gap: 5px !important;
+row-gap: 30px !important;
+padding: 2rem 2% !important; /* Passt das Padding an */
+box-sizing: border-box !important;
+/* background-color: #fff !important; /* Kann entfernt werden, wenn oben definiert */
+margin-bottom: 2rem !important;
+width: 100% !important;
+max-width: 100vw !important;
+}
+
+.cupcake-row.desktop-only .cupcake,
+.cupcake-row.desktop-only .bride-box-desktop {
+/* ... deine bestehenden Cupcake-Styles ... */
+flex-grow: 0 !important;
+flex-shrink: 0 !important;
+flex-basis: calc((100% - (2 * 5px)) / 3) !important;
+max-width: calc((100% - (2 * 5px)) / 3) !important;
+min-width: 0 !important;
+box-sizing: border-box !important;
+display: flex !important;
+flex-direction: column !important;
+align-items: center !important;
+text-align: center !important;
+justify-content: flex-start !important;
+height: auto !important;
+position: relative !important;
+}
+
+.cupcake-row.desktop-only .cupcake img,
+.cupcake-row.desktop-only .bride-box-desktop img {
+/* ... deine bestehenden Cupcake-Bild-Styles ... */
+width: 100% !important;
+aspect-ratio: 1 / 1 !important;
+object-fit: cover !important;
+display: block !important;
+margin-bottom: 0.5rem !important;
+min-width: 150px !important;
+min-height: 150px !important;
+}
+
+.cupcake-button {
+margin-top: 0.5rem;
+align-self: center;
+width: auto;
+padding: 0.6rem;
+font-size: 1.1rem;
+font-family: 'Montserrat', sans-serif;
+}
+.desktop-cta-button {
+position: absolute;
+bottom: 60px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 5;
+background-color: #81D8D0;
+color: black;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+padding: 1.5rem 3rem;
+font-size: 2rem;
+white-space: nowrap;
+font-family: 'Montserrat', sans-serif; /* Montserrat für Desktop CTA Button */
+}
+
+/* --- Full Screen Image (Brautpaar) auf Desktop --- */
+ .full-screen-image.desktop-only {
+width: 100%;
+height: auto;
+overflow: visible;
+position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
+display: flex;
+justify-content: center;
+align-items: flex-start;
+background-color: #fff;
+margin-top: 0rem;
+margin-bottom: 0rem;
+}
+
+.full-screen-image.desktop-only img.full-height-image {
+width: 80%;
+height: auto;
+object-fit: contain;
+display: block;
+/* position: right 10%; ist keine gültige CSS-Eigenschaft. Vermutlich sollte das `right: 10%;` sein */
+right: 20px; /* Wenn es absolut positioniert ist */
+top: auto;
+margin-right: 10px;
+position: relative;
+} 
+
+    /* --- Testimonials (Desktop - nebeneinander) --- */
+    .testimonial-block.desktop-only {
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 0;
+        background-color: white;
+        margin-bottom: 2rem;
+        gap: 600px;
+    }
+
+    .testimonial {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0;
+        gap: 70px;
+        max-width: 1200px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .testimonial:nth-child(1) {
+        align-self: flex-start;
+        padding-left: 10%;
+        padding-right: 5%;
+    }
+
+    .testimonial:nth-child(2) {
+        flex-direction: row-reverse;
+        align-self: flex-end;
+        padding-right: 3%;
+        padding-left: 15%;
+    }
+
+    .testimonial-image-wrapper {
+        flex-shrink: 0;
+        width: 350px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .testimonial img.round {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-bottom: 0;
+    }
+
+    .testimonial-text-content {
+        flex-grow: 1;
+        text-align: left;
+        font-size: 1.25rem;
+        line-height: 1.6;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+    }
+
+    .testimonial-text-content p {
+        margin-bottom: 0.75rem;
+        text-align: left;
+    }
+
+    .testimonial-text-content p.author {
+        font-size: 1.1em;
+        font-style: italic;
+        color: gray;
+        margin-top: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+    }
+
+    /* --- Tower Section (Desktop - 2 Bilder nebeneinander) --- */
+    .tower-section.desktop-only {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #fff !important;
+    }
+
+    .tower-section.desktop-only .tower-image-left,
+    .tower-section.desktop-only .tower-image-right {
+        height: 100vh !important;
+        width: 50% !important;
+    }
+
+    .tower-section.desktop-only img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+    }
+
+.footer-links-desktop {
+display: flex;
+justify-content: space-around;
+margin-bottom: 2rem;
+gap: 20px;
+}
+
+.footer-column {
+flex: 1;
+min-width: 150px;
+text-align: left;
+padding: 0 1rem;
+}
+
+.footer-column h4 {
+font-size: 1.2rem;
+margin-bottom: 1rem;
+text-align: left;
+font-weight: bold;
+text-transform: uppercase;
+color: #333;
+}
+
+.footer-column ul {
+list-style: none;
+padding: 0;
+margin: 0;
+/* font-family wird jetzt vom Elternelement footer.desktop-only geerbt */
+}
+
+.footer-column li {
+margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+text-decoration: none;
+color: #666;
+font-size: 1rem;
+transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+color: #000;
+}
+
+.footer-divider-desktop {
+border: none;
+border-top: 1px solid #ccc;
+margin: 2rem auto;
+width: 90%;
+}
+
+.copyright-desktop {
+text-align: center;
+font-size: 1.5rem;
+font-weight: bold;
+font-family: 'Montserrat', sans-serif; /* Montserrat für Copyright auf Desktop */
+font-weight: 600; /* Optional: etwas fetter für Copyright */
+color: #333;
+padding-top: 1rem;
+}
+
+.copyright { /* Dies ist die globale Regel, falls sie weiterhin für Desktop relevant ist */
+text-align: center;
+font-size: 1.5rem;
+font-weight: bold;
+margin-top: 1rem;
+/* **GEÄNDERT: Montserrat für die globale Copyright-Regel** */
+font-family: 'Montserrat', sans-serif;
+font-weight: 600; /* Optional: etwas fetter für Copyright */
+}
+}
+
+.hero-after-footer.desktop-only {
+        width: 100%;
+        position: relative; /* Wichtig, damit der Text darin absolut positioniert werden kann */
+        overflow: hidden; /* Wenn das Bild nicht die genaue Höhe hat, könnte dies Überlauf verhindern */
+        margin-top: 0; /* Soll direkt nach dem Footer erscheinen */
+        /* Optional: Padding oder margin-bottom, um Abstand zum Ende der Seite zu geben */
+        margin-bottom: 2rem;
+    }
+
+    .hero-image-after-footer {
+        width: 100%;
+        height: 97vh; /* Setze eine feste Höhe, z.B. 100vh, oder passe sie an dein Design an */
+                       /* Oder `height: auto;` wenn das Bild seine natürliche Höhe haben soll */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff; /* Fallback, falls Bild nicht lädt */
+    }
+
+    .hero-image-after-footer img {
+        width: 100%;
+        height: 100vh; /* Oder `height: auto;` wenn Container `height: auto;` hat */
+        object-fit: cover; /* Bild soll den Bereich füllen */
+        display: block;
+    }
+
+    .hero-text-after-footer {
+        position: absolute; /* Absolut positioniert innerhalb des .hero-after-footer */
+        top: 10%; /* Zentriert vertikal */
+        left: 50%; /* Zentriert horizontal */
+        transform: translate(-50%, -50%); /* Exakte Zentrierung */
+        color: black;
+        text-align: center;
+        white-space: nowrap;
+        z-index: 2; /* Über dem Bild */
+    }
+
+    .hero-text-after-footer h1 {
+        font-size: 5rem; /* Gleiche Größe wie der obere Header */
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-text-after-footer p {
+        font-size: 2.5rem; /* Gleiche Größe wie der obere Header */
+        font-style: italic;
+        font-family: 'Montserrat', sans-serif;
+    }

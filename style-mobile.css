@@ -1,0 +1,226 @@
+
+/* --- Basis & Reset (für alle Bildschirmgrößen) --- */
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+}
+
+h1, h3 {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+p {
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+button {
+  background-color: #81D8D0;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Mobile spezifisch */
+.hero {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-text {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.hero-text h1 {
+  font-size: 2.5em;
+  margin-top: 0;
+  margin-bottom: 0.2em;
+}
+
+.hero-text p {
+  font-size: 1.2em;
+}
+
+/* Cupcake Grid (2 Spalten) */
+.cupcake-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.cupcake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.cupcake img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+
+.cupcake h3 {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.cupcake-button {
+  margin-top: 0.5rem;
+  align-self: center;
+  max-width: 90%;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+/* Vollbild Bilder (Brautpaar) */
+.full-screen-image {
+    width: 100vw;
+    height: 100vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
+    overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
+    position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
+
+    /* <--- NEU: Hintergrundbild für Parallax */
+    background-image: url('images/Brautpaar-mobile.jpg'); /* Pfad zu deinem mobilen Brautpaar-Bild */
+    background-size: cover; /* Bild füllt den Container und wird beschnitten */
+    background-position: center center; /* Bild zentrieren */
+    background-repeat: no-repeat; /* Verhindert Wiederholung */
+    background-attachment: scroll; /* <--- WICHTIG FÜR MOBILE: Fixed kann Probleme machen */
+    /* Du könntest es auf "fixed" setzen und testen, aber oft ist "scroll" auf Mobile besser */
+    /* Wenn du den Effekt auf Mobile deaktivieren möchtest, lass es bei scroll. */
+
+    display: flex; /* Bleibt bestehen, wenn du z.B. einen Text overlay hast */
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Fallback Farbe */
+    margin-bottom: 1rem;
+    margin-top: 1rem; /* Abstand zur vorherigen Sektion */
+}
+
+/* Braut Sektion */
+.bride-section {
+  position: relative;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.bride-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.bride-section .cta-button {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* Testimonials */
+.testimonial-block {
+  padding: 1rem;
+  text-align: center;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.testimonial {
+  margin-bottom: 1.5rem;
+}
+
+.testimonial img.round {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* Cupcakes in Schachtel Vollbild */
+.full-width-image {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.full-width-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Footer */
+footer {
+  padding: 2rem 1rem;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.footer-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-mobile h4 {
+  margin-bottom: 0.5rem;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 1rem;
+  padding: 1rem 0 0 0;
+  background-color: #f2f2f2;
+}
