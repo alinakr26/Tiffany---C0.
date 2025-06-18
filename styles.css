@@ -175,7 +175,7 @@ margin-bottom: 1rem;
     background-size: cover; /* Bild füllt den Container und wird beschnitten */
     background-position: center center; /* Bild zentrieren */
     background-repeat: no-repeat; /* Verhindert Wiederholung */
-    background-attachment: fixed; /* <--- HIER ÄNDERN! Setze dies auf FIXED für den Parallax-Effekt auf Mobile */
+     background-attachment: scroll;
 
     display: flex;
     justify-content: center;
