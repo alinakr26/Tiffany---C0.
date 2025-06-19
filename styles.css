@@ -171,7 +171,7 @@ margin-bottom: 1rem;
     overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
     position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
 
-    background-image: url('images/Brautpaar.jpg'); /* Pfad zu deinem mobilen Brautpaar-Bild */
+    background-image: url('images/Brautpaarmobile.jpg'); /* Pfad zu deinem mobilen Brautpaar-Bild */
     background-size: cover; /* Bild füllt den Container und wird beschnitten */
     background-position: center center; /* Bild zentrieren */
     background-repeat: no-repeat; /* Verhindert Wiederholung */
