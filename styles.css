@@ -3,8 +3,8 @@ margin: 0;
 padding: 0;
 background: #fff; /* <--- Dies sollte bereits weiß sein */
 color: #333;
-   min-height: 100vh;
-    position: relative;
+min-height: 100vh;
+position: relative;
 }
 
 h1, h3, h4 { /* h1 und h3 sollen GFS Didot verwenden */
@@ -68,25 +68,25 @@ background-color: #fff;
 
 
 main {
-    position: relative; /* MUSS positioniert sein, damit z-index funktioniert */
-    z-index: 2; /* MUSS HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
-    margin-top: 100vh; /* Genau 100% der Viewport-Höhe, um den Wrapper unter dem Header zu starten */
-    background-color: white; /* **Ganz WICHTIG:** Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
-    width: 100%;
-    padding-top: 1px; /* **Wichtig:** Verhindert "margin-collapse" mit dem ersten Kindelement */
-    box-sizing: border-box; /* Sicherstellen, dass Padding in der Breite enthalten ist */
+position: relative; /* MUSS positioniert sein, damit z-index funktioniert */
+z-index: 2; /* MUSS HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
+margin-top: 100vh; /* Genau 100% der Viewport-Höhe, um den Wrapper unter dem Header zu starten */
+background-color: white; /* **Ganz WICHTIG:** Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
+width: 100%;
+padding-top: 1px; /* **Wichtig:** Verhindert "margin-collapse" mit dem ersten Kindelement */
+box-sizing: border-box; /* Sicherstellen, dass Padding in der Breite enthalten ist */
 }
 
 footer { /* Dies gilt für den Footer in beiden Ansichten als Basis */
-    position: relative;
-    z-index: 2; /* Muss HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
-    background-color: #f2f2f2; /* Wichtig: Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-    padding: 2rem 1rem;
-    margin-top: 0;
-    padding-top: 1px; /* Verhindert Margin Collapse */
-    box-sizing: border-box;
+position: relative;
+z-index: 2; /* Muss HÖHER sein als der z-index des Headers (z.B. 2 > 1) */
+background-color: #f2f2f2; /* Wichtig: Eine solide, undurchsichtige Farbe, um den Header zu verdecken */
+color: #333;
+font-family: 'Montserrat', sans-serif;
+padding: 2rem 1rem;
+margin-top: 0;
+padding-top: 1px; /* Verhindert Margin Collapse */
+box-sizing: border-box;
 }
 
 /* --- Globale Sichtbarkeit Helper Klassen (WICHTIG!) --- */
@@ -103,7 +103,7 @@ display: none;
 /* ============================================== */
 /* --- HEADER: Fixiert, füllt den Bildschirm, Inhalt scrollt darüber --- */
 .hero.mobile-only {
-    position: fixed; /* WICHTIG: Bild bleibt fixiert im Hintergrund */
+position: fixed; /* WICHTIG: Bild bleibt fixiert im Hintergrund */
 top: 0;
 left: 0;
 width: 100%;
@@ -115,37 +115,37 @@ background-color: #fff; /* Fallback, falls Bild nicht lädt */
 display: flex; /* Bleibt wie gehabt für Zentrierung des Textes */
 justify-content: center;
 align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Dezenter Schatten für visuelle Trennung */
+box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Dezenter Schatten für visuelle Trennung */
 }
 
 .hero.mobile-only img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Bild füllt den Bereich aus, kann beschnitten werden */
-    display: block;
+width: 100%;
+height: 100%;
+object-fit: cover; /* Bild füllt den Bereich aus, kann beschnitten werden */
+display: block;
 }
 
 .hero-text-mobile {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Zentriert den Text im Hero-Bereich */
-    color: black;
-    z-index: 2; /* Text über dem Bild im Hero */
-    white-space: nowrap;
+position: absolute;
+top: 10%;
+left: 50%;
+transform: translate(-50%, -50%); /* Zentriert den Text im Hero-Bereich */
+color: black;
+z-index: 2; /* Text über dem Bild im Hero */
+white-space: nowrap;
 }
 
 .hero-text-mobile h1 {
-    font-size: 2.5em;
-    margin-top: 0;
-    margin-bottom: 0.2em;
-    font-family: 'GFS Didot', serif; /* Spezifische Schriftart für diesen h1 */
+font-size: 2.5em;
+margin-top: 0;
+margin-bottom: 0.2em;
+font-family: 'GFS Didot', serif; /* Spezifische Schriftart für diesen h1 */
 }
 
 .hero-text-mobile p {
-    font-size: 1.2em;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
+font-size: 1.2em;
+font-family: 'Montserrat', sans-serif;
+font-weight: 100;
 }
 
 /* --- MAIN CONTENT: Rollt über den fixierten Header --- */
@@ -164,32 +164,18 @@ margin-bottom: 1rem;
 
 
 /* --- Mobile Vollbild Bilder (Brautpaar) --- */
-/* --- Mobile Vollbild Bilder (Brautpaar) --- */
-.parallax-container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; /* Wichtig, um Überlaufen zu verhindern */
-    position: relative; /* Für absolute Positionierung des Bildes */
-}
+.full-screen-image.mobile-only {
+width: 100vw;
+height: 90vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
+overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
+position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
 
-.parallax-image {
-    width: 100%;
-    height: 120%; /* Etwas größer als der Container, damit es sich bewegen kann */
-    object-fit: cover;
-    position: absolute;
-    top: -10%; /* Startposition außerhalb des Sichtfelds, um Bewegung zu ermöglichen */
-    left: 0;
-    will-change: transform; /* Für bessere Performance */
-}
-
-.content-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2; /* Über dem Bild */
-    color: white;
-    text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #fff; /* Fallback Farbe */
+margin-bottom: 1rem;
+margin-top: 1rem; /* Abstand zur vorherigen Sektion */
 }
 
 
@@ -549,7 +535,7 @@ position: relative;
         flex-direction: column;
         padding: 3rem 0;
         background-color: fff;
-        gap: 2rem;
+        gap: 600px;
     }
 
     .testimonial {
@@ -650,6 +636,7 @@ gap: 20px;
 .footer-column {
 flex: 1;
 min-width: 150px;
+min-height: 200px;
 text-align: left;
 padding: 0 1rem;
 }
