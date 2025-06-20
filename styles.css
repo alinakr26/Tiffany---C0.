@@ -167,7 +167,7 @@ margin-bottom: 1rem;
 /* --- Mobile Vollbild Bilder (Brautpaar) --- */
 .full-screen-image {
     width: 100vw;
-    height: 70vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
+    height: 100vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
     overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
     position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
 
