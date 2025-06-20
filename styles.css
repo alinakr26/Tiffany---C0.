@@ -162,20 +162,25 @@ background-color: #fff;
 margin-bottom: 1rem;
 }
 
-
-/* --- Mobile Vollbild Bilder (Brautpaar) --- */
 .full-screen-image.mobile-only {
-width: 100vw;
-height: 90vh; /* Oder die gewünschte Höhe für Mobile, z.B. 70vh */
-overflow: hidden; /* Wichtig, um sicherzustellen, dass nichts überläuft */
-position: relative; /* Oder standard, wenn kein anderes Element absolut darin liegt */
+    width: 100%;
+    height: 90vh; /* Or your desired height for mobile, e.g., 70vh */
+    overflow: hidden; /* Important to ensure nothing overflows */
+    position: relative; /* Or standard if no other absolute elements are within it */
 
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #fff; /* Fallback Farbe */
-margin-bottom: 1rem;
-margin-top: 1rem; /* Abstand zur vorherigen Sektion */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Fallback color */
+    margin-bottom: 1rem;
+    margin-top: 1rem; /* Spacing to the previous section */
+}
+
+.full-screen-image.mobile-only img { /* Target the image inside the container */
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This is the key property */
+    object-position: center; /* Ensures the image is centered within the container */
 }
 
 
